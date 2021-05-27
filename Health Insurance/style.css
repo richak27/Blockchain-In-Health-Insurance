@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style the search field */
+  div.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 3%;
+    width: 50%;
+    background: #f1f1f1;
+  }
+
+  div.example input[type=number] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 3%;
+    width: 50%;
+    background: #f1f1f1;
+  }
+  div.example h2 {
+    padding: 10px;
+    font-size: 17px;
+    /*border: 1px solid grey;*/
+    float: left;
+    margin-left: 9.5%;
+    margin-bottom: 2%;
+    width: 70%;
+    font-size: xx-large;
+    background: #f1f1f1;
+  }
+  
+  /* Style the submit button */
+  div.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #0cb7eb;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  div.example button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  div.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  div.example label{
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    width: 50%;
+    background: #f1f1f1;
+  }
+
+  div.example {
+    margin : 2%;
+    border : 2px solid black;
+  }

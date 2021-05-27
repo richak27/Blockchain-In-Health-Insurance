@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hospital Registration</title>
+
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+
+	<script src = "./node_modules/web3/dist/web3.min.js"></script>
+	<script type="text/javascript" src="connection.js"></script>
+
+</head>
+<style>
+	headingtitle {
+	  color: black;
+	}
+</style>
+
+<body>
+	
+	<style>
+		#child1 {
+position: absolute;
+top: 450px;
+left: 28px;
+color: grey;
+}
+
+	</style>
+	
+	<header class="header1">
+		<div class="container-menu-header">
+			<div class="wrap_header">
+			</div>
+		</div>
+
+		<div class="wrap_header_mobile">
+			<a href="index.php" class="logo-mobile">
+				<img src="images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<div class="btn-show-menu">
+				<div class="header-icons-mobile">
+					<a href="#" class="header-wrapicon1 dis-block">
+						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					<div class="login100-pic js-tilt" data-tilt>
+						<img src="images/img-01.png" alt="IMG">
+					</div>
+					<div class="login100-form validate-form">
+					<span class="login100-form-title">
+						<headingtitle>Hospital Registration</headingtitle>
+					</span>
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="hospitalWalletAddress" type="text" name="Wallet_Address"
+							placeholder="Wallet Address" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_address_field"></span>
+					</div>
+
+
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="hospitalName" type="text" name="Name"
+							placeholder="Hospital Name " required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_name_field"></span>
+					</div>
+
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="hospitalRegNo" type="number" name="RegNo"
+							placeholder="Registration No." required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_reg_number_field"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="hospitalPassword" type="password" name="password"
+							placeholder="Password" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_password_field"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button id="registerHospital" class="login100-form-btn" onclick="">
+							Register
+						</button>
+					</div>
+					 <br>
+					<a href="Login.html"><b><pre>  Already Registered? Login here</pre></b></a>
+
+
+					<div class="text-center p-t-136">
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+    <script>
+    
+        console.log(insurance);  
+    	$("#registerHospital").click(function(){
+            
+            console.log("registerHospital function called");
+            var x = document.getElementById("hospitalName").value;
+            console.log(x);
+            var y = document.getElementById("hospitalRegNo").value;
+            console.log(y);
+            var z = document.getElementById("hospitalWalletAddress").value;
+            console.log(z);
+			var w =document.getElementById("hospitalPassword").value;
+			console.log(w);
+            insurance.registerhospital(x,y,z,w,{from: z, gas:977710},);
+			alert("Hospital Registered");
+			console.log("Hospital Registered");
+
+			window.location.href = "Login.html";
+
+        }); 
+
+
+    </script>
+</body>
+</html>

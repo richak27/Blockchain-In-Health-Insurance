@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Hospital</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+	  <link rel="stylesheet" href="css/profile.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src = "./node_modules/web3/dist/web3.min.js"></script>
+    <script type="text/javascript" src = "connection.js"></script>
+
+</head>
+  <body>
+		
+    <style>
+      #child1 {
+position: absolute;
+top: 450px;
+left: 28px;
+color: grey;
+}
+
+  </style>
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	        </button>
+        </div>
+	  		<div class="img bg-wrap text-center py-4" style="background-color: #32373d;height:191.465px;border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+	  			<div class="user-logo">
+	  				<div class="img" style="background-image: url(images/hospital_profile.jpg); height: 110px;
+            width: 110px;"></div>
+	  				<h3><p style="color: white; font-size: 11px;" id="addressid"></p></h3>
+	  			</div>
+	  		</div>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a onclick="ProfileClick()" href='#Profile'><span class="fa fa-home mr-3"></span> Profile</a>
+          </li>
+          <li>
+            <a onclick="BillClick()" href='#GenerateBill'><span class="fa fa-gift mr-3"></span> Generate Bill</a>
+          </li>
+          <li>
+            <a id="logout"><span class="fa fa-sign-out mr-3"></span>Logout</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4"><p style="color:white;"></p></h2>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <div id="BillDiv" class="centeralign">
+      <form action="/" class="decor">
+        <div class="form-left-decoration"></div>
+        <div class="form-right-decoration"></div>
+        <div class="form-inner">
+          <h1>Generate Bill</h1>
+          <input id="patientAddress" type="text" placeholder="Patient Address">
+          <input id="billAmount" type="text" placeholder="Amount">
+          <input id="billDescription" type="text" placeholder="Description">
+          <button id="generateBill" type="button" >Submit</button>
+        </div>
+      </form>
+  </div>
+
+
+<div id="ProfileDiv" class="container emp-profile">
+	<form method="post">
+		<div class="row">
+			<!-- <div class="col-md-4">
+				<div class="profile-img">
+					<img src="images/hospital_home.jpg" alt="hiiii"/>
+				</div>
+			</div> -->
+			<div class="col-md-6">
+				<div class="profile-head">
+							<h5>
+								<b><p style="font-size: 25px; color:black;" id="hospital_name"></p></b>
+							</h5>
+							
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row">
+
+			<div class="col-md-8">
+				<div class="tab-content profile-tab" id="myTabContent">
+					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+								
+								<div class="row">
+									<div class="col-md-6">
+										<label>Registration No.</label>
+									</div>
+									<div class="col-md-6">
+										<p style="color:black;" id="HospitalReg"></p>
+									</div>
+								</div>
+
+							  <div class="row">
+								<div class="col-md-6">
+									<label>Number Of Verifications</label>
+								</div>
+								<div class="col-md-6">
+									<p style="color:black;" id="VerificationsNo"></p>
+								</div>
+							</div>
+					
+					</div>
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+
+
+</div>
+</div>
+
+
+      <script>
+              console.log(insurance);
+              var userAddressForSession = localStorage.getItem("userAddress");
+              console.log("Session Address : ",userAddressForSession);
+			  
+			      var HospitalName= insurance.hospitalmapping(userAddressForSession)[1];
+            var regNo=insurance.hospitalmapping(userAddressForSession)[2];
+            var verifications=insurance.hospitalmapping(userAddressForSession)[4];
+      
+            document.getElementById('addressid').innerHTML = userAddressForSession;
+            document.getElementById('hospital_name').innerHTML = HospitalName;
+            document.getElementById('HospitalReg').innerHTML=regNo;
+            document.getElementById('VerificationsNo').innerHTML=verifications;
+      
+			 
+			 $(document).ready(function(){
+                console.log("ready");
+                $("#ProfileDiv").show();
+                $('#BillDiv').hide();
+                
+
+            });
+
+      function ProfileClick()
+      {
+				        $("#ProfileDiv").show();
+                $('#BillDiv').hide();
+                
+      }
+
+	  function BillClick()
+	  {
+				$("#ProfileDiv").hide();
+                $('#BillDiv').show();
+
+	  }
+
+
+              $('#generateBill').click(function()
+              {
+                  console.log("generateBill called")
+                  var x = document.getElementById("patientAddress").value;
+                  console.log(x);
+
+                  var y = document.getElementById("billAmount").value;
+                  console.log(y);
+
+                  var z = document.getElementById("billDescription").value;
+                  console.log(z);
+                  if(insurance.customerData(x).alreadyexists == "false")
+                    {
+                      console.log("No such patient found");
+                      alert("No such patient found");
+                    }
+
+                  else{
+                    insurance.generatebBillforpatient(x,y,z, {from: userAddressForSession, gas: 977710});
+                    alert("Bill generated successfully");
+                    console.log("Bill generated successfully");
+              }
+            });
+
+            $("#logout").click(function(){
+			localStorage.setItem("userAddress", null);
+      		alert("Logging out");
+			window.location.href = "home.html";
+		});
+
+    </script>
+
+    <style>
+      * {
+      box-sizing: border-box;
+      }
+      html, body {
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px; 
+      color: #666;
+      }
+      input, textarea { 
+      outline: none;
+      }
+      body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+      background: #111827;
+      }
+      h1 {
+      margin-top: 0;
+      font-weight: 500;
+      }
+      form {
+      position: relative;
+      width: 80%;
+      border-radius: 30px;
+      background: #fff;
+      }
+      .form-left-decoration,
+      .form-right-decoration {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 20px;
+      border-radius: 20px;
+      background: #111827;
+      }
+      .form-left-decoration {
+      bottom: 60px;
+      left: -30px;
+      }
+      .form-right-decoration {
+      top: 60px;
+      right: -30px;
+      }
+      .form-left-decoration:before,
+      .form-left-decoration:after,
+      .form-right-decoration:before,
+      .form-right-decoration:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 20px;
+      border-radius: 30px;
+      background: #fff;
+      }
+      .form-left-decoration:before {
+      top: -20px;
+      }
+
+      .centeralign{
+          top:0px;
+          left: 160px;
+          position: relative;
+      }
+      .form-left-decoration:after {
+      top: 20px;
+      left: 10px;
+      }
+      .form-right-decoration:before {
+      top: -20px;
+      right: 0;
+      }
+      .form-right-decoration:after {
+      top: 20px;
+      right: 10px;
+      }
+      .circle {
+      position: absolute;
+      bottom: 80px;
+      left: -55px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      }
+      .form-inner {
+      padding: 40px;
+      }
+      .form-inner input,
+      .form-inner textarea {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 20px;
+      background: #d0dfe8;
+      }
+      .form-inner textarea {
+      resize: none;
+      }
+      button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 20px;
+      border: none;
+      border-bottom: 4px solid #111827;
+      background: #111827; 
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      }
+      button:hover {
+      background: #111827;
+      } 
+      @media (min-width: 568px) {
+      form {
+      width: 60%;
+      }
+      }
+    </style>
+
+    </body>
+    </html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Customer Registration</title>
+
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+
+    <script src = "./node_modules/web3/dist/web3.min.js"></script>
+	<script type="text/javascript" src = "connection.js"></script>
+
+</head>
+
+<style>
+	headingtitle {
+	  color: #111827;
+	  font-size: 24px;
+	  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif		  
+	}
+</style>
+
+
+<body>
+
+	<header class="header1">
+		<div class="container-menu-header">
+			<div class="wrap_header">
+			</div>
+		</div>
+
+		<div class="wrap_header_mobile">
+			<a class="logo-mobile">
+				<img src="images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<div class="btn-show-menu">
+				<div class="header-icons-mobile">
+					<a href="#" class="header-wrapicon1 dis-block">
+						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					<div class="login100-pic js-tilt" data-tilt>
+						<img src="images/img-01.png" alt="IMG">
+					</div>
+					<div class="login100-form validate-form">
+					<span class="login100-form-title">
+						<headingtitle><b>Customer Registration</b></headingtitle>
+					</span>
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="customerAddress" type="text" name="Wallet_Address"
+							placeholder="Wallet Address" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_address_field"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="customerName" type="text" name="Name"
+							placeholder="Customer Name " required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_name_field"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="customerPassword" type="password" name="password"
+							placeholder="Password" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+						<span class="error text-danger" id="empty_password_field"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button id="registerCustomer" class="login100-form-btn" onclick="">
+							Register
+						</button>
+					</div>
+
+					<br>
+					<a href="Login.html"><b><pre>Already Registered? Login here</pre></b></a>
+
+
+					<div class="text-center p-t-136">
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      
+    <script>
+        
+        console.log(insurance);  
+		
+		var userAddressForSession = localStorage.getItem("userAddress");
+		$(document).ready(function(){
+  			console.log("User for Session : ", userAddressForSession);
+		});
+		
+		$("#registerCustomer").click(function(){
+            
+            console.log("registerCustomer function called");
+            var x = document.getElementById("customerName").value;
+            console.log(x);
+            
+			var y = document.getElementById("customerAddress").value;
+			console.log(y);
+			
+			var z = document.getElementById("customerPassword").value;
+			console.log(z);
+            
+			insurance.registerasacustomer(x,y,z, {from: y, gas:977710});
+			alert("Customer registration successful!");
+			console.log("Customer registration successful!!");
+			
+			window.location.href = "Login.html";
+
+            
+        }); 
+
+		var address = localStorage.getItem("userAddress");
+
+
+		
+    </script>
+</body>
+</html>
